@@ -45,3 +45,12 @@ def test_log_formatter_outputs_valid_json():
     record.fields = {"status": 200}
     parsed = json.loads(JsonFormatter().format(record))
     assert parsed["msg"] == "hello" and parsed["status"] == 200
+
+
+def test_intentional_failure_demo():
+    # Deliberately failing check: proves the pipeline blocks the release
+    assert client_version_expected() == "2.0.0"
+
+
+def client_version_expected():
+    return "1.0.0"
