@@ -1,0 +1,36 @@
+groups:
+  - name: apex-ops-api
+    rules:
+      - alert: ApiNotReady
+        expr: sum(rate(http_requests_total{path="/ready",status="503"}[2m])) > 0
+        for: 2m
+        labels: {severity: page}
+        annotations:
+          summary: "Readiness failing: app alive but cannot reach its database"
+          runbook: "docs/runbook.md#db-unreachable"
+
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(http_requests_total{status=~"5.."}[5m]))
+            / sum(rate(http_requests_total[5m])) > 0.05
+        for: 5m
+        labels: {severity: page}
+        annotations:
+          summary: "More than 5% of requests return 5xx"
+
+      - alert: HighLatencyP95
+        expr: |
+          histogram_quantile(0.95,
+            sum by (le) (rate(http_request_duration_seconds_bucket[5m]))) > 0.5
+        for: 10m
+        labels: {severity: ticket}
+        annotations:
+          summary: "p95 latency above 500ms for 10 minutes"
+
+      - alert: ApiTargetDown
+        expr: up{job="apex-ops-api"} == 0
+        for: 1m
+        labels: {severity: page}
+        annotations:
+          summary: "Prometheus cannot scrape the API (container down or restart loop)"
+          runbook: "docs/runbook.md#restart-loop"
