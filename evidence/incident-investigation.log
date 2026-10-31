@@ -1,0 +1,4 @@
+NAME                 IMAGE                COMMAND                  SERVICE   CREATED          STATUS                         PORTS
+apex-ops-api-app-1   apex-ops-api:1.2.0   "python -c 'raise Sy…"   app       23 seconds ago   Restarting (1) 6 seconds ago   
+apex-ops-api-db-1    postgres:16-alpine   "docker-entrypoint.s…"   db        37 hours ago     Up 18 minutes (healthy)        5432/tcp
+ready_exit=7

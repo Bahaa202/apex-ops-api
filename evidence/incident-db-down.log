@@ -1,0 +1,7 @@
+health=200
+ready=503
+app-1  | {"ts": "2026-10-31T01:24:59+0000", "level": "INFO", "logger": "apex", "msg": "request", "method": "GET", "path": "/health", "status": 200, "duration_ms": 0.69}
+app-1  | INFO:     172.18.0.1:55528 - "GET /health HTTP/1.1" 200 OK
+app-1  | {"ts": "2026-10-31T01:25:00+0000", "level": "ERROR", "logger": "apex", "msg": "readiness failed", "error": "(psycopg.OperationalError) [Errno -2] Name or service not known\n(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+app-1  | {"ts": "2026-10-31T01:25:00+0000", "level": "INFO", "logger": "apex", "msg": "request", "method": "GET", "path": "/ready", "status": 503, "duration_ms": 149.33}
+app-1  | INFO:     172.18.0.1:55532 - "GET /ready HTTP/1.1" 503 Service Unavailable
