@@ -1,0 +1,16 @@
+ Container apex-ops-api-db-1 Running 
+ Container apex-ops-api-app-1 Recreate 
+ Container apex-ops-api-app-1 Recreated 
+ Container apex-ops-api-db-1 Waiting 
+ Container apex-ops-api-db-1 Healthy 
+ Container apex-ops-api-app-1 Starting 
+ Container apex-ops-api-app-1 Started 
+health check failed for 1.2.0, rolling back to 1.1.0
+ Container apex-ops-api-db-1 Running 
+ Container apex-ops-api-app-1 Recreate 
+ Container apex-ops-api-app-1 Recreated 
+ Container apex-ops-api-db-1 Waiting 
+ Container apex-ops-api-db-1 Healthy 
+ Container apex-ops-api-app-1 Starting 
+ Container apex-ops-api-app-1 Started 
+rolled back 1.2.0 -> 1.1.0 OK
